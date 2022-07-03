@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/6f6b757251.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="favicon.png">
+    <title>ChatterBox | Chat </title>
+</head>
+<body>
+    <div class="nav">
+        <div class="brandLogo">
+            <h1>Chatter<b>Box</b></h1>
+        </div>
+        <div class="options">
+            <div class="user" id = "userLogo"><i class="fa-regular fa-user"></i></div>
+        </div>
+    </div>
+    <ul class = 'dropdown' id = 'dropdown'>
+        <li id = 'username'><%=username%></li> 
+        <li>
+            <form action="/logout" method="POST">
+                <input type= "submit" value = "Logout">
+            </form>
+        </li>
+    </ul>
+    <div class="chatApp" id = "chatApp">
+        <div class="contacts">
+                <div class="searchBar">
+                    <form action="" id = 'searchForm'>
+                        <input type="text" id = "searchBar" placeholder="search contacts" autocomplete="sadhfsadfs">
+                        <button type = "submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </form>
+                </div>
+                <div class="contactsContainer" id = 'contacts'> 
+                        <h2>Your Contacts</h2>
+                        
+                            <% if(body.length == 0){ %>
+                                <p class = 'acknowledge'>
+                                    you have not made any contacts , search for the username 
+                                of people you know 
+                                </p>
+                        <%}
+                        else{
+                            for(let i = 0 ; i < body.length ; i++){
+                                let template = `<div class= 'contactItem' id = 'contactItem' title ='${body[i]}'>
+                            <h3>${body[i]}</h3>
+                        </div> `
+                            %>
+                            
+                                <%- template %>
+                            <%
+                            }
+                        }
+                        %>
+                        <!-- <div class="contactItem" id = 'contactItem' title ='default contact'>
+                            <h3> ContactName</h3>
+                        </div> -->
+                </div>
+        </div>
+        <div class="chatSection" id = 'chatSection'>
+            <div class="chats" id = 'chats'>
+                <h2 id = 'contactName'>Contact Name</h2>
+                <input type = 'hidden' value = "" id = "roomId"> 
+
+                <div class="recieve-message">
+                    <div class="chat-wrapper">
+                        <p>Hi , this is Arun.</p>
+                    </div>
+                    
+                </div>
+                <div class="send-message">
+                <div class="chat-wrapper">
+                    <p>Hi Arun , this is Sourav. </p>
+                </div>
+                </div>  
+<div class="accept-message">
+    <div class="prompt">
+        <h3>Username wants to send you a message</h3>
+    </div>
+    <div class="buttons">
+        <button>Accept</button>
+        <button>Decline</button>
+    </div>
+</div>
+    </div>
+            <div class="sendBox">
+                <form action="" id='sendMsg'>
+                    <input type="text" name="" autocomplete="sadjgfksadfh" id = 'msg'>
+                    <button type = "submit"><i class="fa-solid fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+    
+        <div class="chat-acknowlege" id ='chatAcknowledge'>
+            <p>click on your contacts and start messaging</p>
+        </div>
+    </div>
+    <script type = "module" defer src = 'chat.js'>
+    </script>
+</body>
+</html>

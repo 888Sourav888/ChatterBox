@@ -1,0 +1,359 @@
+/* Styles for the chat page starts here */
+/*
+Primary color : #203471
+
+Secondary color : #fdb42d 
+
+ivory : #FFFFF0 
+
+*/
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3&display=swap');
+body{
+    margin : 0 ; 
+    padding : 0 ; 
+    overflow: hidden;
+    background-color: #FFFFF0; 
+}
+
+/*Styles for scrollbar ends here */ 
+/* styles for the nav starts here */ 
+.nav{
+    border : 2px solid black ; 
+    display : flex ; 
+    color : #FFFFF0; 
+    justify-content: space-between;
+    background-color: #203471 ;
+}
+.brandLogo{
+
+    margin-left : 10px ; 
+    padding : 0px 5px 0px 5px ; 
+   
+}
+.brandLogo h1{
+    color : #FFFFF0; 
+}
+.brandLogo h1 b{
+    color : #fdb42d  ; 
+}
+.options{
+
+    display : flex ; 
+    justify-content: center; 
+    align-items:  center;
+    padding : 0px 10px 0px 10px; 
+}
+.user{
+    background-color: #fdb42d;
+    padding : 10px ; 
+    color : black  ; 
+    border-radius: 25px ;
+}
+.dropdown{
+    border: 1px solid black ;
+    position: absolute;
+    z-index: 10000000;
+    padding : 5px  ; 
+    margin  : 0 ; 
+    right : 0 ; 
+    border-radius: 5px;
+    box-shadow:  1px 1px 10px black ;
+    font-family: 'Source Sans 3', sans-serif;
+    opacity: 0 ;
+    transform : translateY(-10px) ; 
+    transition: opacity 250ms ease-in-out , transform 250ms ease-in-out;
+    background-color: #203471;
+}
+.active{
+    opacity: 100;
+    transform : translateY(2px) ; 
+}
+.dropdown li{
+    list-style-type: none ;
+    padding : 10px 20px 10px 20px  ;
+    font-size: 21px ; 
+    color : #fdb42d ; 
+    border-bottom : 1px solid #fdb42d ;
+    
+}
+.dropdown li input[type = 'submit']{
+    border : none ; 
+    background : none ; 
+    font-size : 20px ; 
+    color : #fdb42d ; 
+    cursor: pointer;
+    
+}
+/*Styles for the nav ends here */ 
+.chatApp{
+    background-color: ghostwhite;
+    height : 100vh ; 
+    display : flex ; 
+
+}
+.contacts{
+    /* border : 2px solid black  ; */
+    border-right : 1px solid #fdb42d ;
+    width: 25% ; 
+
+}
+.chatSection{
+    /* border : 2px solid black  ; */
+    width : 75% ; 
+    display : none ; 
+}
+.chat-acknowlege{
+    width : 75% ; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.chat-acknowlege p{
+    text-align: center; 
+    font-size : 24px ; 
+    font-family: 'Source Sans 3', sans-serif;  
+}
+
+/* Styles for the seachBar is here  */
+.searchBar{
+
+    padding : 7px 10px 7px 10px; 
+}
+.searchBar form{
+    width : 100% ; 
+    display : flex ; 
+    
+    height : 35px ;  
+}
+.searchBar form button{
+    width : 15% ; 
+    background : none ; 
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border : none ; 
+    background-color: white;
+    border : 1px solid #fdb42d ; 
+    border-left : none ; 
+    cursor : pointer ; 
+    color : #fdb42d; 
+    transition : font-size 250ms ease-in-out ;  
+}
+.searchBar form button:hover{
+    font-size: 15px ; 
+}
+
+.searchBar form input[type = 'text']{
+    width : 85% ; 
+    border : none ; 
+    font-size: 16px;
+    font-family: 'Source Sans 3', sans-serif;  
+    padding : 5px ; 
+    padding-left : 10px ; 
+    border : 1px solid #fdb42d ;
+    border-right : none ; 
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px ; 
+    
+}
+.searchBar form input[type = 'text']:focus{
+    outline : none ; 
+}
+/* styles for the search bar ends here  */
+
+/*styles for the contact container starts here */
+.contactsContainer{
+    /* border : 2px solid black ;  */
+    height : 100vh ; 
+    overflow-y : scroll ; 
+}
+.contactsContainer::-webkit-scrollbar{
+    width:5px ; 
+}
+.contactsContainer::-webkit-scrollbar-thumb{
+    background-color: #fdb42d;
+}
+.contactsContainer::-webkit-scrollbar-track{
+    background-color: #203471;
+}
+.contactItem{
+    padding : 0 ;  
+    border : 1px solid #fdb42d ; 
+    cursor : pointer ; 
+    box-shadow: inset 0 0 0 #fdb42d; 
+    transition: transform 250ms ease-in-out;
+}
+.contactItem:hover{
+    transform: scale(0.95);
+}
+.contactItem h3{
+
+   text-align: center;
+   font-family: 'Source Sans 3', sans-serif; 
+}
+/* styles for the contact container ends here      */
+
+/*styles for the chats starts here */
+.chats{
+
+    height : 80% ; 
+    overflow-y: scroll;
+    background-color: ghostwhite; 
+    max-width: 2000px ; 
+
+}
+
+.chats::-webkit-scrollbar{
+    width:5px ; 
+}
+.chats::-webkit-scrollbar-thumb{
+    background-color: #fdb42d;
+}
+.chats::-webkit-scrollbar-track{
+    background-color: #203471;
+}
+.sendBox{
+    border-top : 1px solid #fdb42d ; 
+    height : 20% ; 
+    background-color: ivory;
+}
+.sendBox form{
+    height: 100% ; 
+    display : flex ; 
+    flex-direction:  row ;
+    justify-content: center;
+    padding-top : 10px ; 
+}
+.sendBox form input[type = "text"]{
+    height: 20%;
+    width : 80% ; 
+    margin : 0 ; 
+    padding : 4px ; 
+    font-size : 16px ; 
+}
+.sendBox form input[type = "text"]:focus{
+    box-shadow: 2px 3px 5px #fdb42d;
+}
+.sendBox button{
+    height:  30% ; 
+    margin : 0 ; 
+    margin-left : 5px ; 
+    color : #fdb42d ; 
+    padding-left : 25px ; 
+    padding-right : 25px ; 
+    width: max-content;
+    border: none ; 
+    background : none ; 
+    outline : none ; 
+    border-radius:  15px ;
+    background-color: #203471;
+    cursor : pointer ; 
+    transition: background-color  250ms ease-in-out;
+}
+.sendBox button:hover{
+    background-color: black ;
+    box-shadow: 2px 2px 3px #fdb42d;
+}
+.sendBox button:focus{
+    outline : none ; 
+}
+.recieve-message{
+ 
+    padding : 3px ; 
+}
+.send-message{
+ 
+    padding : 3px ; 
+}
+.chat-wrapper{
+    background-color: #fdb42d;
+    font-family: 'Source Sans 3', sans-serif;
+    display: inline-block;
+    color : #203471 ; 
+    border-radius : 20px ; 
+    padding : 2px ; 
+    font-size : 16px ; 
+    padding-left : 15px ; 
+    padding-right : 15px ; 
+}
+.chat-wrapper p{
+    word-break: break-all;
+    white-space: normal;
+}
+.recieve-message .chat-wrapper{
+    background-color: #203471 ; 
+    color : #fdb42d ; 
+}
+.send-message {
+    display:  flex ;
+    justify-content: flex-end;
+}
+.chats h2{
+    padding : 15px  ; 
+    margin : 0 ;
+    margin-bottom : 3px ; 
+    position: sticky ; 
+    top : 0 ;
+    background-color: ghostwhite; 
+    border-bottom : 2px solid #fdb42d  ; 
+    text-align : center ; 
+}
+.accept-message{
+    border-top : 1px solid #fdb42d ; 
+    position: sticky;
+    bottom : 0 ; 
+    background-color: ghostwhite;
+    padding : 5px ; 
+}
+.accept-message h3{
+    text-align: center;
+    margin : 0 ;
+}
+.accept-message .buttons{
+    display:  flex ;
+    margin: 0 ;
+    justify-content: center;
+    padding : 10px ; 
+}
+.accept-message .buttons button{
+    padding : 10px ; 
+    background-color: #203471;
+    cursor : pointer ; 
+    color : #fdb42d; 
+    border : none ; 
+    outline : none ; 
+    margin : 10px ; 
+    font-size : 16px ; 
+    padding-left: 15px ;
+    padding-right:  15px ;
+    border-radius: 5px ;
+    transition: transform 250ms ease-in-out;
+}
+.accept-message .buttons button:hover{
+    transform:  scale(1.10);
+    box-shadow: 2px 2px 4px #fdb42d;
+}
+.no-result{
+    text-align : center ; 
+    font-family: 'Source Sans 3', sans-serif;
+}
+
+.acknowledge{
+    font-size : 15px ; 
+    text-align: center;
+    font-family: 'Source Sans 3', sans-serif;
+}
+.empty{
+
+    text-align: center; 
+    font-family: 'Source Sans 3', sans-serif;
+}
+.sent-message{
+    color : black  ; 
+    background-color: #fdb42d;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+
+/*Styles for the chat ends here */ 
+/* Styles for the chat page ends here */

@@ -1,0 +1,26 @@
+{
+  "name": "chatapp",
+  "version": "1.0.0",
+  "description": "this is a chat application that allows two users to send text messages",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "author": "Sourav Kumar N.R.S",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.2",
+    "connect-mongodb-session": "^3.1.1",
+    "cookie-parser": "^1.4.6",
+    "ejs": "^3.1.6",
+    "express": "^4.17.3",
+    "express-session": "^1.17.2",
+    "lodash": "^4.17.21",
+    "mongoose": "^6.2.3",
+    "nodemon": "^2.0.15",
+    "session-file-store": "^1.5.0",
+    "socket.io": "^4.4.1",
+    "socket.io-client": "^4.4.1"
+  }
+}

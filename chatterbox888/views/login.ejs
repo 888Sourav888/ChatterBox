@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatterBox | <%= title %>  </title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="icon" href="favicon.png">
+</head>
+<body class = "login-page">
+
+    <div class="container" id = "container">
+        <div class="form-container sign-up-container">
+            <form action="" method = "POST" id = 'signUpForm' >
+                <h1>Create Account</h1>
+                <input type="text" id = "signUpUsername" name = "username" Placeholder = "Username" required >
+                <input type="email" id = "signUpEmail" name = "email" placeholder="Email"  required >
+                <input type="password"  id = "signUpPassword" name = "password" placeholder = "Password"  required >
+                <button class = "main-btn" type = "submit">Sign Up</button>
+            </form>
+        </div>
+        <div class="form-container sign-in-container">
+            <form action="" id = 'loginForm' >
+                <h1>Sign in</h1>
+                <input type="text" id = 'loginUsername' placeholder = "Username">
+                <input type="password" id = 'loginPassword' placeholder = "Password">
+                <button class = "main-btn" type = "submit">Sign In</button>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Welcome Back!</h1>
+                    <p>To keep connected with us please login with your personal info</p>
+                    <button class="ghost" id = "signIn">Sign In</button>                    
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Hello , Friend!</h1>
+                    <p>Don't have an account ?
+                         sign up now</p>
+                    <button class="ghost" id = "signUp">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+                    const signUpButton = document.getElementById('signUp');
+            const signInButton = document.getElementById('signIn');
+            const container = document.getElementById('container');
+
+            signUpButton.addEventListener('click', () => {
+                container.classList.add("right-panel-active");
+            });
+
+            signInButton.addEventListener('click', () => {
+                container.classList.remove("right-panel-active");
+            });
+
+            //Code to do the registration 
+            
+            const signUpForm = document.getElementById('signUpForm') ; 
+            signUpForm.addEventListener('submit' , async (e) =>{
+                const username = document.getElementById('signUpUsername') ; 
+                const email = document.getElementById('signUpEmail') ; 
+                const password = document.getElementById('signUpPassword') ; 
+                e.preventDefault() ; 
+
+                const response = await fetch('/signUpAuth' , {
+                    method : 'POST' , 
+                    headers : {'Content-Type' : 'application/json'} , 
+                    body : JSON.stringify({ name  : username.value})  
+                }) ; 
+                const data = await response.json() ; 
+                if(data.length > 0 ){
+                    alert('Warning : username exists') ; 
+                }
+                else{
+                    //let's send the data to db from here itself
+                    const response  = await fetch('/register' , {
+                        method : 'POST' , 
+                        headers : {'Content-Type' : 'application/json'} , 
+                        body : JSON.stringify({
+                            username : username.value , 
+                            email : email.value , 
+                            password : password.value 
+                        })
+                    }) ; 
+                    const data = await response.json() ; 
+                    if(data.registered){
+                        alert('Successfully Registered ! Now login') ; 
+                    }
+                }
+            }); 
+
+
+            //code to do the Login 
+            const loginForm = document.getElementById('loginForm') ; 
+                loginForm.addEventListener('submit'  , async (e) =>{
+                
+                    e.preventDefault() ; 
+                    const username = document.getElementById('loginUsername') ; 
+                    const password = document.getElementById('loginPassword') ; 
+                    
+                    
+                    const response  = await fetch('/login' , {
+                        method : 'POST' , 
+                        headers : {'Content-Type' : 'application/JSON'} , 
+                        body : JSON.stringify({
+                            username : username.value , 
+                            password : password.value 
+                        })
+                    }) ; 
+                    const data = await response.json() ;
+                    if(data.ok){
+                        //Code for sessions 
+                        // we are making a post request to the server and setting up the session
+                        //and then we redirect the chat page 
+                        const response = await fetch('/loginSession' ,{
+                            method : 'POST' , 
+                            headers : {'Content-Type' : 'application/JSON'} , 
+                            body : JSON.stringify({
+                                username : username.value , 
+                                password : password.value 
+                            })
+                        });
+                        const data = await response.json() ; 
+                        if(data.ok){
+                            window.location.replace('/chat') ; 
+                        }
+                    }
+                    else{
+                        alert(data.reason) ; 
+                    }
+
+
+                }) ; 
+    </script>
+</body>
+</html>
