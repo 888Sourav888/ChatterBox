@@ -11,8 +11,7 @@ Users are asked to create an account. After creation, they can login and search 
 - [Pre-Requisites](#pre)
 - [Installation](#ins)
 - [Run in developer mode](#run)
-## Demo <a id = "dem"></a>
-https://chatterbox888.herokuapp.com/
+
 
 ## Reasons for doing this project <a id = "reason"></a>
 In today's world communicating our thought process to others is the most important skill. I was heavily inspired by the web version of whatsapp and wanted to create my own version of it and also wanted to strengthen my foundational knowledge in Node.js , Express.js and MongoDb through this project.
